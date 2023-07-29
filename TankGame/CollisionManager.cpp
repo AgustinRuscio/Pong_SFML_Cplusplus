@@ -7,6 +7,8 @@ CollisionManager* CollisionManager::instance = nullptr;
 
 CollisionManager::CollisionManager()
 {
+	pongSound = new sf::Music();
+	pongSound->openFromFile("Resources/SFX/pongSFX.ogg");
 }
 
 void CollisionManager::ResolveCollision(Entity* A, Entity* B)
@@ -20,6 +22,7 @@ void CollisionManager::ResolveCollision(Entity* A, Entity* B)
 	{
 		Ball* ball = isBallA ? dynamic_cast<Ball*>(A) : dynamic_cast<Ball*>(B);
 		ball->SetVelocity(Vector2f(-ball->GetVelocity().x, ball->GetVelocity().y));
+		pongSound->play();
 	}
 }
 
@@ -32,6 +35,8 @@ CollisionManager::~CollisionManager()
 		Entity* current = *it;
 		delete current;
 	}
+
+	delete pongSound;
 }
 
 void CollisionManager::AddEntity(Entity* entity)

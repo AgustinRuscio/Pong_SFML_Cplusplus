@@ -1,16 +1,16 @@
 #pragma once
 #include "Ball.h"
 #include "Racket.h"
-//#include <SFML/Audio.hpp>
+#include <SFML/Audio.hpp>
 
 class GameManager
 {
 private:
 	static GameManager* instance;
-	GameManager() {};
+	GameManager();
 
 public:
-	~GameManager() {};
+	~GameManager();
 
 	static GameManager* GetInstance()
 	{
@@ -25,9 +25,9 @@ public:
 	Racket* _ia;
 	Ball* _ball;
 
-	//Music winMusic;
-	//Music loseMusic;
-	
+	Music* winSound;
+	Music* loseSound;
+	Music* golSound;
 
 	void SetEntities(Racket* player, Racket* ia, Ball* ball);
 	void Gol(bool golFromIa);

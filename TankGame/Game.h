@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-//#include <SFML/Audio.hpp>
+#include <SFML/Audio.hpp>
 #include "Racket.h"
 #include "Ball.h"
 #include "MiddleFieldMark.h"
@@ -13,6 +13,8 @@ class Game
 {
 private:
 	RenderWindow* window;
+	Music* ambientMusic;
+
 	bool _isRunning;
 	void Update(float deltaTime);
 	void Draw();
@@ -27,7 +29,6 @@ private:
 	Ball* _ball;
 
 
-	//Music music;
 
 	list<MiddleFieldMark*> marksFieldList;
 

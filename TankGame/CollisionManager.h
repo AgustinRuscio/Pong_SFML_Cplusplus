@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 #include <iostream>
-//#include <SFML/Audio.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace std;
 
@@ -17,7 +17,7 @@ private:
 	list<Entity*> entities;
 	void ResolveCollision(Entity* A, Entity* B);
 
-	//sf::Music pongSound;
+	sf::Music* pongSound;
 
 public:
 	virtual ~CollisionManager();

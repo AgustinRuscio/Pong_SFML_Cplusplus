@@ -36,6 +36,8 @@ Game::Game()
 
     _font = new Font();
 
+    _font->loadFromFile("Resources/Textures/Milky_Again.ttf");
+
     _playerScore = new Text(to_string(_playerRacket->GetScore()), *_font, 100);
     _playerScore->setFillColor(Color::Blue);
     _playerScore->setPosition(250, 20);
@@ -44,12 +46,8 @@ Game::Game()
     _aiScore->setFillColor(Color::Yellow);
     _aiScore->setPosition(550, 20);
 
-    _font->loadFromFile("Resources/Textures/Milky_Again.ttf");
 
-    //music.openFromFile("Resources/SFX/BocaYoTeAmo.ogg");
-    //
-    //music.setLoop(true);
-    //music.play();
+        
 
     CreateField();
     UpdateScores();
@@ -57,6 +55,13 @@ Game::Game()
     CollisionManager::GetInstance()->AddEntity(_playerRacket);
     CollisionManager::GetInstance()->AddEntity(_aiRacket);
     CollisionManager::GetInstance()->AddEntity(_ball);
+
+    ambientMusic = new Music();
+    
+	ambientMusic->setLoop(true);
+    ambientMusic->setVolume(25);
+    ambientMusic->openFromFile("Resources/SFX/BocaYoTeAmo.ogg");
+	ambientMusic->play();
 
 	_isRunning = true;
 }
